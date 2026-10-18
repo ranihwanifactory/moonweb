@@ -63,7 +63,7 @@ def get_moon_phase_info(target_date):
     return moon_age, illumination, phase_angle, phase_name, emoji
 
 # ---------------------------------------------------------
-# 3. 일출/일몰 & 월출/월몰 약식 계산 함수 (순수 파이썬 수학 연산)
+# 3. 일출/일몰 & 월출/월몰 약식 계산 함수 (순수 파이썬)
 # ---------------------------------------------------------
 def get_approx_sun_moon_riseset(target_date, moon_age):
     day_of_year = target_date.timetuple().tm_yday
@@ -209,3 +209,19 @@ for week in cal:
                 """,
                 unsafe_allow_html=True
             )
+
+# ---------------------------------------------------------
+# 8. 하단 푸터 (제작자 정보 및 블로그 링크)
+# ---------------------------------------------------------
+st.markdown("---")
+st.markdown(
+    """
+    <div style="text-align: center; padding: 10px; color: #888888; font-size: 14px;">
+        Made with ❤️ | <b>제작자 블로그:</b> 
+        <a href="https://ranihwanibaby.tistory.com" target="_blank" style="color: #FF4B4B; text-decoration: none; font-weight: bold;">
+            https://ranihwanibaby.tistory.com
+        </a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
