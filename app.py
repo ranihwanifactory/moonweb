@@ -4,6 +4,7 @@ import calendar
 import streamlit as st
 from PIL import Image, ImageDraw
 import numpy as np
+import streamlit.components.v1 as components
 
 # ---------------------------------------------------------
 # 1. 페이지 기본 설정
@@ -211,12 +212,32 @@ for week in cal:
             )
 
 # ---------------------------------------------------------
-# 8. 하단 푸터 (제작자 정보 및 블로그 링크)
+# 8. 하단 카카오 애드핏(AdFit) 광고 영역 및 제작자 푸터
 # ---------------------------------------------------------
 st.markdown("---")
+
+# 광고를 화면 정중앙에 깔끔하게 배치하기 위한 레이아웃
+ad_col1, ad_col2, ad_col3 = st.columns([1, 2, 1])
+
+with ad_col2:
+    st.markdown("<div style='text-align: center; color: #888; font-size: 12px; margin-bottom: 5px;'>[AD] 스폰서 광고</div>", unsafe_allow_html=True)
+    
+    # 카카오 애드핏 HTML/JS 컴포넌트 삽입
+    kakao_ad_html = """
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+        <ins class="kakao_ad_area" style="display:block;"
+             data-ad-unit = "DAN-5WPG9bREN13eXkm4"
+             data-ad-width = "320"
+             data-ad-height = "200"></ins>
+        <script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script>
+    </div>
+    """
+    components.html(kakao_ad_html, height=220)
+
+# 제작자 푸터 링크
 st.markdown(
     """
-    <div style="text-align: center; padding: 10px; color: #888888; font-size: 14px;">
+    <div style="text-align: center; padding: 15px; color: #888888; font-size: 14px;">
         Made with ❤️ | <b>제작자 블로그:</b> 
         <a href="https://ranihwanibaby.tistory.com" target="_blank" style="color: #FF4B4B; text-decoration: none; font-weight: bold;">
             https://ranihwanibaby.tistory.com
